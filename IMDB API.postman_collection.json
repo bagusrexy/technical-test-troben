@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "5c39c678-099a-43a8-b16c-ba3ce5f73b65",
+		"name": "IMDB API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29864727"
+	},
+	"item": [
+		{
+			"name": "IMDB API",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://www.omdbapi.com/?y=2024&s=inside out&type=movie&apikey=23b30571",
+					"protocol": "http",
+					"host": [
+						"www",
+						"omdbapi",
+						"com"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "y",
+							"value": "2024"
+						},
+						{
+							"key": "s",
+							"value": "inside out"
+						},
+						{
+							"key": "i",
+							"value": "tt26047818",
+							"disabled": true
+						},
+						{
+							"key": "type",
+							"value": "movie"
+						},
+						{
+							"key": "t",
+							"value": "anyone but you",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "r",
+							"value": "json",
+							"disabled": true
+						},
+						{
+							"key": "plot",
+							"value": "full",
+							"disabled": true
+						},
+						{
+							"key": "t",
+							"value": "the avengers",
+							"disabled": true
+						},
+						{
+							"key": "apikey",
+							"value": "23b30571"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Movie By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/movie/detail?id=tt26047818",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"movie",
+						"detail"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "tt26047818"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Movie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/movie/search?title=anyone&year=2023",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"movie",
+						"search"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "anyone"
+						},
+						{
+							"key": "year",
+							"value": "2023"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Popular Movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/movie/popular?title=inside",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"movie",
+						"popular"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "inside"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

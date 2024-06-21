@@ -11,4 +11,6 @@ func Router(router *gin.Engine) {
 
 	imdb := new(controller.IMDBController)
 	router.GET("/movie/detail", imdb.GetMoviesDetail)
+	router.GET("/movie/search", imdb.GetMovieByKeyword)
+	router.GET("/movie/popular", imdb.GetPopularMovie)
 }

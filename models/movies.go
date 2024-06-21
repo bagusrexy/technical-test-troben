@@ -16,7 +16,7 @@ type Movie struct {
 
 type MovieSearch struct {
 	ID    string `json:"imdbID"`
-	Title string `json:"title"`
+	Title string `json:"Title"`
 	Year  string `json:"Year"`
-	Image string `json:"poster"`
+	Image string `json:"Poster"`
 }

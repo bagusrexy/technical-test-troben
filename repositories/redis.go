@@ -1,17 +1,36 @@
 package repositories
 
 import (
+	"context"
 	"fmt"
-	"os"
-	"strconv"
+	"time"
 
-	"github.com/redis/go-redis/v9"
+	"github.com/go-redis/redis/v8"
 )
 
-func CreateConnectionRedis() *redis.Client {
-	redis_db, _ := strconv.Atoi(os.Getenv("REDIS_DB"))
-	return redis.NewClient(&redis.Options{
-		Addr: fmt.Sprintf("%s:%s", os.Getenv("REDIS_HOST"), os.Getenv("REDIS_PORT")),
-		DB:   redis_db,
+var (
+	ctx = context.Background()
+	rdb *redis.Client
+)
+
+func InitRedis(addr, password string, db int) {
+	rdb = redis.NewClient(&redis.Options{
+		Addr:     addr,
+		Password: password,
+		DB:       db,
 	})
+}
+
+func SetCache(key string, value []byte, expiration time.Duration) error {
+	return rdb.Set(ctx, key, value, expiration).Err()
+}
+
+func GetCache(key string) ([]byte, error) {
+	val, err := rdb.Get(ctx, key).Result()
+	if err == redis.Nil {
+		return nil, fmt.Errorf("key does not exist")
+	} else if err != nil {
+		return nil, err
+	}
+	return []byte(val), nil
 }
